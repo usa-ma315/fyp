@@ -19,6 +19,10 @@
         <color rgba="0 0 0 1"/>
     </material>
 
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
     <link name="base_link">
     </link>
 
@@ -56,6 +60,7 @@
         <child link="left_wheel"/>
         <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
+        <limit effort="0.05" velocity="10.0"/>
     </joint>
 
     <link name="left_wheel">
@@ -67,7 +72,7 @@
         </visual>
         <collision>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <sphere radius="0.05" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
@@ -82,6 +87,7 @@
         <child link="right_wheel"/>
         <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
         <axis xyz="0 0 -1"/>
+        <limit effort="0.05" velocity="10.0"/>
     </joint>
 
     <link name="right_wheel">
@@ -93,7 +99,7 @@
         </visual>
         <collision>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <sphere radius="0.05" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
@@ -125,5 +131,10 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_sphere>
     </link>
+
+    <gazebo reference="caster_wheel">
+        <mu1 value="0.0"/>
+        <mu2 value="0.0"/>
+    </gazebo>
 
 </robot>
