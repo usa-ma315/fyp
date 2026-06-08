@@ -1,5 +1,6 @@
 twist_mux:
   ros__parameters:
+    use_stamped: true    # ← add this line
     topics:
       joystick:
         topic: /cmd_vel_joy
