@@ -99,22 +99,6 @@ def generate_launch_description():
             ('cmd_vel_out', '/cmd_vel_key'),
         ]
     )
-    joy_params = os.path.join(
-        get_package_share_directory(package_name), 'config', 'joystick.yaml')
-
-    joy_node = Node(
-        package='joy',
-        executable='joy_node',
-        parameters=[{'use_sim_time': False}, joy_params],
-    )
-
-    teleop_node = Node(
-        package='teleop_twist_joy',
-        executable='teleop_node',
-        name='teleop_twist_joy_node',
-        parameters=[{'use_sim_time': False}, joy_params],
-        remappings=[('/cmd_vel', '/cmd_vel_joy')],
-    )
 
     return LaunchDescription([
         rsp,
@@ -123,6 +107,4 @@ def generate_launch_description():
         delayed_joint_broad_spawner,
         twist_mux,
         twist_stamper,
-        joy_node,    
-        teleop_node,  
     ])
