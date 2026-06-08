@@ -90,10 +90,21 @@ def generate_launch_description():
         ]
     )
 
+    twist_stamper = Node(
+        package='twist_stamper',
+        executable='twist_stamper',
+        parameters=[{'frame_id': 'base_link'}],
+        remappings=[
+            ('cmd_vel_in', '/cmd_vel_key_raw'),
+            ('cmd_vel_out', '/cmd_vel_key'),
+        ]
+    )
+
     return LaunchDescription([
         rsp,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner,
         twist_mux,
+        twist_stamper,
     ])
