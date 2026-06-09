@@ -52,7 +52,7 @@ def generate_launch_description():
         arguments=[
             'diff_cont',
             '--controller-ros-args',
-            '-r /diff_cont/cmd_vel:=/cmd_vel'
+            '-r /diff_cont/cmd_vel:=/cmd_vel -r /diff_cont/odom:=/odom'
         ],
     )
 

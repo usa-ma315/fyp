@@ -13,10 +13,13 @@ diff_cont:
   ros__parameters:
     publish_rate: 50.0
     base_frame_id: base_link
+    odom_frame_id: odom          # ← add this
     left_wheel_names: ['left_wheel_joint']
     right_wheel_names: ['right_wheel_joint']
     wheel_separation: 0.35
     wheel_radius: 0.05
-    use_stamped_vel: false 
+    use_stamped_vel: false
+    publish_odom: true           # ← add this
+    publish_odom_tf: true        # ← add this
 # joint_broad:
 #   ros__parameters:
